@@ -117,7 +117,7 @@ export default function Favorites() {
         favorites.length>0 ? 
         <>
         {
-          showAlertBoxForTable && <AlertBox id={rowId} actionName={"Delete of Favorites id "+rowId} action={handleDelete} setShowAlertBox={setShowAlertBoxForTable} />
+          showAlertBoxForTable && <AlertBox id={rowId} actionName={"deletion of favorite "+rowId} action={handleDelete} setShowAlertBox={setShowAlertBoxForTable} />
         }
         <div className='flex justify-between items-center w-full mx-5'>
      

@@ -178,7 +178,7 @@ const filteredAppointments = appointments.filter((appointment) => {
         appointments.length>0 ? 
         <>
         {
-          showAlertBoxForTable && <AlertBox id={rowId} actionName={"Delete of Appointments id "+rowId} action={handleDelete} setShowAlertBox={setShowAlertBoxForTable} />
+          showAlertBoxForTable && <AlertBox id={rowId} actionName={"deletion of appointment "+rowId} action={handleDelete} setShowAlertBox={setShowAlertBoxForTable} />
         }
         <div className='flex justify-between items-center w-full mx-5 max-md:flex-col'>
      

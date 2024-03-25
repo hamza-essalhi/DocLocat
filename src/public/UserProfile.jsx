@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FaCalendarCheck, FaClock, FaHeart, FaMapMarkerAlt } from 'react-icons/fa';
 import { FaKitMedical, FaMessage, FaPhone } from 'react-icons/fa6';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -15,6 +15,7 @@ export default function UserProfile() {
     const token = useToken() // Assuming 'auth' is your authentication slice
     const isAuthenticated = useIsAuthenticated();
     const { id } = useParams();
+    const navigate=useNavigate()
     const [doctor, setDoctor] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -68,7 +69,7 @@ export default function UserProfile() {
         const fetchDoctors = async () => {
             try {
                 const response = await api.get(`users/user/${id}`)
-
+               
                 // Fetch data from your /all endpoint
                 setDoctor(response.data);
                 if (isAuthenticated) {
@@ -80,13 +81,14 @@ export default function UserProfile() {
 
                 setLoading(false);
             } catch (error) {
+                navigate('/')
                 console.error(error);
                 setLoading(false);
             }
         };
 
         fetchDoctors();
-    }, [id, token,isAuthenticated]);
+    }, [id, token,isAuthenticated,navigate]);
 
     const handleDateChange = (event) => {
         setSelectedDate(event.target.value);
@@ -168,6 +170,8 @@ export default function UserProfile() {
                                     {
                                         isAuthenticated ? <>
                                             {
+                                                user._id !== doctor._id? <>
+                                                {
                                                 favorite.length === 0 ?
                                                     <form
 
@@ -210,8 +214,11 @@ export default function UserProfile() {
                                                     :
                                                     <span className='p-2 rounded-md bg-rose-700 text-white font-bold text-sm flex justify-center items-center gap-2'><Link to={`/favorites/`}>This doctor is in your favorites</Link><FaHeart /></span>
                                             }
+                                                </>:<div> <span className='p-2 rounded-md bg-rose-700 text-white font-bold text-sm flex items-center'>You can't add your self to favorites </span></div>
+
+                                            }
                                         </> : <>
-                                            <span className='p-2 rounded-md bg-rose-700 text-white font-bold text-sm'>Pleas Login To Add This Doctor To Favorites </span>
+                                            <span className='p-2 rounded-md bg-rose-700 text-white font-bold text-sm'>Pleas login to add this doctor to favorites </span>
                                         </>
                                     }
                                 </div>
@@ -224,7 +231,7 @@ export default function UserProfile() {
                                         isAuthenticated ?
                                             <>
                                                 {
-                                                    user._id !== doctor._id &&
+                                                    user._id !== doctor._id?
                                                     <>
                                                         {
                                                             !appointment ? <form action="" className='flex flex-col gap-3 w-10/12' onSubmit={handleSubmit}>
@@ -290,6 +297,8 @@ export default function UserProfile() {
                                                                     <span className=' max-sm:text-sm flex items-center gap-4'><FaClock className='text-red-700' />Appointment Hour : {appointment.hour}</span>
                                                                 </div>
                                                         }
+                                                    </>:<>
+                                                    <div> <span className='p-2 rounded-md bg-rose-700 text-white font-bold text-sm flex items-center'>You can't make an appointment for your self! </span></div>
                                                     </>
 
                                                 }

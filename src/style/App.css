@@ -486,7 +486,7 @@ header form .input-group input:focus, .dashboard-nav .input-group:focus, .dashbo
   flex: none !important;
 }
 .dashboard-nav .notification-box .status {
-  width: 15% !important;
+  width: 150px !important;
 }
 .dashboard-nav .notification-box .message {
   flex: 1 !important;

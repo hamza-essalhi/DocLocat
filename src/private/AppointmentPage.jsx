@@ -149,7 +149,7 @@ export default function AppointmentPage() {
     return (
         <div className='mt-24 max-sm:mt-1'>
             {
-                showAlertBox && <AlertBox id={id} actionName={"Delete of Appointments id " + id} action={handleDelete} setShowAlertBox={setShowAlertBox} />
+                showAlertBox && <AlertBox id={id} actionName={"deletion of appointment " + id} action={handleDelete} setShowAlertBox={setShowAlertBox} />
             }
             {
                 !loading ? <>
