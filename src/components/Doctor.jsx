@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 export default function Doctor({ doctor,color }) {
   return (
     <motion.div 
-    className={` flex flex-col justify-center items-center doctor-box  flex-1 ${color} max-md:!min-w-full`}
+    className={` flex flex-col justify-center items-center doctor-box  flex-1 ${color} max-md!min-w-2/5`}
     initial={{x:-200,scale:1}}
     whileInView={{x:0,scale:1}}
     transition={{duration:0.4}}
