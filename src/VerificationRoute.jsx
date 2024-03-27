@@ -6,7 +6,7 @@ import PhoneTopNav from './components/PhoneTopNav';
 import TopNavBar from './components/TopNavBar';
 import Footer from './components/Footer';
 
-export default function PrivatePublicRoute() {
+export default function VerificationRoute() {
     // State for controlling the side navigation
     const isAuthenticated = useIsAuthenticated(); 
     // Function to toggle the side navigation

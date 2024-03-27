@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import RouteController from './RouteController'; // These is public route controller
 import PrivetRoute from './PrivateRoute'; // These is private route controller
 import AuthRoute from './AuthRoute'; // These is auth route controller  
-
+import VerificationRoute from './VerificationRoute'; // These is verification route controller  
 // Public routes
 import Home from './public/Home'; 
 import Login from './public/Login'; 
@@ -33,7 +33,6 @@ import Verification from './public/Verification';
 import ResetPassword from './public/ResetPassword';
 import PasswordVerification from './public/PasswordVerification';
 import EmailVerification from './public/EmailVerification';
-import PrivatePublicRoute from './PrivatePublicRoute';
 import UserProfile from './public/UserProfile';
 
 
@@ -76,10 +75,10 @@ useEffect(() => {
           <Route path='/doctor/:id' element={<UserProfile />} />
         
         </Route>
-         {/* Public Routes */}
+         {/* Verification Routes */}
          <Route
           path='/'
-          element={<PrivatePublicRoute />}
+          element={<VerificationRoute />}
         >
         
           <Route path='/verification/:id/:token' element={<Verification />} /> {/* Verification */}
